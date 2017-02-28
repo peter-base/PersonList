@@ -1,0 +1,33 @@
+﻿@model  List<PersonList.Models.Person>
+
+<link href="~/Areas/Reports/Styles/CCB/CCB.css" rel="stylesheet" />
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { @id = "person-list-form", @name = "person-list-form" }))
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="panel panel-info">
+            <div class="panel-body">
+
+                <div class="col-md-2">
+                    @Html.HiddenFor(m => m[i].Index)
+                    <label class="control-label">Name</label>
+                    @Html.TextBoxFor(m => m[i].Name,
+                        new
+                        {
+                            @class = "ccb-nodes form-control",
+                            @placeholder = "Enter CR-CN"
+                        })
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="@Model[i].Index" class="btn btn-primary" onclick="RemovePerson(this.id)">Remove</button>
+                </div>
+            </div>
+        </div>
+    }
+    @Html.Hidden("remove_person_index", 1, new { @id = "remove_person_index" })
+}
+
+
+
+

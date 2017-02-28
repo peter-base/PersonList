@@ -1,0 +1,17 @@
+﻿@using PersonList.Models
+<script src="~/Scripts/PersonList.js"></script>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <h2>Index - Persons</h2>
+    <button type="button" class="btn btn-default form-control" onclick="OnAddPerson();">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Person
+    </button>
+</div>
+    <div id="persons-container">
+        @*List of Persons*@
+        @Html.Partial("_PersonList", new List<Person>() { new Person() { Index = 0, Name = "Person A" } }, new ViewDataDictionary())
+    </div>
+
